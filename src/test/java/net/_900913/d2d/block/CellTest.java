@@ -1,7 +1,6 @@
-package ru._900913.d2d.block;
+package net._900913.d2d.block;
 
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 
 public class CellTest {
