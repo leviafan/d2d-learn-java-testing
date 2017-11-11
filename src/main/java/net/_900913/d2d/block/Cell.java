@@ -5,15 +5,15 @@ public class Cell {
     protected int y;
     protected boolean isEmpty;
 
-    Cell(int x, int y){
+    public Cell(int x, int y){
         this.x = x;
         this.y = y;
         isEmpty = true;
     }
-    int getX(){
+    public int getX(){
         return x;
     }
-    int getY(){
+    public int getY(){
         return y;
     }
     public boolean isEmpty(){
@@ -27,5 +27,11 @@ public class Cell {
             result+=String.format("filled Cell at (%d, %d)",x,y);
         }
         return result;
+    }
+    public void setWall() {
+        this.isEmpty = false;
+    }
+    public void clean() {
+        this.isEmpty = true;
     }
 }

@@ -13,4 +13,12 @@ public class CellTest {
         assertEquals("Is empty", true, cell.isEmpty());
         assertEquals("toString", "empty Cell at (1, 2)", cell.toString());
     }
+    public void testFillFlushCell() {
+        Cell cell = new Cell(1, 2);
+        assertEquals("Is empty", true, cell.isEmpty());
+        cell.setWall();
+        assertEquals("Is empty", false, cell.isEmpty());
+        cell.clean();
+        assertEquals("Is empty", true, cell.isEmpty());
+    }
 }
