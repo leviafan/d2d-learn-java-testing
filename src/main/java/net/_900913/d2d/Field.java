@@ -2,6 +2,8 @@ package net._900913.d2d;
 
 import net._900913.d2d.block.Cell;
 
+import java.io.*;
+import java.nio.Buffer;
 import java.util.ArrayList;
 
 public class Field {
@@ -34,5 +36,39 @@ public class Field {
             }
         }
         return null;
+    }
+    public int fillFromFile(String fileName) {
+//File format: text. One line - one row of the field. O - empty cell, W - wall.
+        String line;
+        try {
+            File file = new File(fileName);
+            FileInputStream inputFileStream = new FileInputStream(new File(fileName));
+            BufferedReader inputReader = new BufferedReader(new InputStreamReader(inputFileStream));
+            for (int i=0;i<this.length;i++) {
+                line = inputReader.readLine();
+                if (line!=null) {
+                    int j=0;
+                    while (j<this.width && j<line.length()) {
+                        switch(line.charAt(j)) {
+                            case 'W':
+                                field.get(i).get(j).setWall();
+                                break;
+                            default:
+                                break;
+                        }
+                        j++;
+                    }
+                }
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found!");
+            e.printStackTrace();
+            return 1;
+        } catch (java.io.IOException e) {
+            System.out.println("IOException");
+            e.printStackTrace();
+            return 2;
+        }
+        return 0;
     }
 }
